@@ -28,5 +28,18 @@ class Recette {
         // Destructeur
         ~Recette(void);
 
+        // Getter
+        int getNombreIngredients(void) const;
+
+        int getQuantite(int index) const;
+
+        std::string getIngredient(int index) const;
+        
+        bool getOptionnel(int index) const;
+
         friend std::ostream &operator<<(std::ostream &os, const Recette &recette);
 };
+
+std::vector<std::string> getListOfRecettes(void);
+
+void initListOfRecettes(void);

@@ -4,17 +4,17 @@ Recette::Recette(void) {
 }
 
 Recette::Recette(const std::string file) {
-    readFile(file);
+    this->readFile(file);
 }
 
 Recette::Recette(const char *file) {
-    readFile(std::string(file));
+    this->readFile(std::string(file));
 }
 
 Recette::~Recette(void) {
-    delete[] m_listeQuantites;
-    delete[] m_listeIngredients;
-    delete[] m_listeOptionnels;
+    delete[] this->m_listeQuantites;
+    delete[] this->m_listeIngredients;
+    delete[] this->m_listeOptionnels;
 }
 
 void Recette::readFile(const std::string file) {
@@ -71,12 +71,80 @@ void Recette::readFile(const std::string file) {
     fichier.close();
 }
 
+int Recette::getNombreIngredients(void) const {
+    return this->m_nombreIngredients;
+}
+
+int Recette::getQuantite(int index) const {
+    if (index < 0 || index >= this->m_nombreIngredients) {
+        std::cout << "Erreur : l'index est hors de la liste" << std::endl;
+        return -1;
+    }
+    return this->m_listeQuantites[index];
+}
+
+std::string Recette::getIngredient(int index) const {
+    if (index < 0 || index >= this->m_nombreIngredients) {
+        std::cout << "Erreur : l'index est hors de la liste" << std::endl;
+        return "";
+    }
+    return this->m_listeIngredients[index];
+}
+
+bool Recette::getOptionnel(int index) const {
+    if (index < 0 || index >= this->m_nombreIngredients) {
+        std::cout << "Erreur : l'index est hors de la liste" << std::endl;
+        return "";
+    }
+    return this->m_listeOptionnels[index];
+}
+
 std::ostream &operator<<(std::ostream &os, const Recette &recette) {
-    for (int i = 0; i < recette.m_nombreIngredients; i++) {
-        os  << recette.m_listeQuantites[i] << " "
-            << recette.m_listeIngredients[i] << " "
-            << (recette.m_listeOptionnels[i] ? "O" : "X") 
+    for (int i = 0; i < recette.getNombreIngredients(); i++) {
+        os  << recette.getQuantite(i) << " "
+            << recette.getIngredient(i) << " "
+            << (recette.getOptionnel(i) ? "O" : "X") 
             << std::endl;
     }
     return os;
+}
+
+std::vector<std::string> getListOfRecettes(void) {
+    std::ifstream fichier("recettes/recettes.txt");
+    if (!fichier) {
+        std::cout << "Erreur: le fichier n'a pas pu être ouvert" << std::endl;
+        return std::vector<std::string>();
+    }
+    std::string ligne;
+    std::vector<std::string> liste;
+    while (getline(fichier, ligne)) {
+        liste.push_back(ligne);
+    }
+    fichier.close();
+    return liste;
+}
+
+// Code très moche à changer si j'ai envie
+// mais ça fontionne BG
+
+void initListOfRecettes(void) {
+    system("ls recettes/*.csv > recettes/recettes.txt");
+    std::ifstream fichier("recettes/recettes.txt");
+    if (!fichier) {
+        std::cout << "Erreur: le fichier n'a pas pu être ouvert" << std::endl;
+        return;
+    }
+    std::string ligne;
+    std::vector<std::string> liste;
+    while (getline(fichier, ligne)) {
+        ligne.erase(ligne.size() - 4, ligne.size());
+        ligne.erase(0, 9);
+        liste.push_back(ligne);
+    }
+    fichier.close();
+    system("echo > recettes/recettes.txt");
+    for (size_t i = 0; i < liste.size(); i++) {
+        system(("echo " + liste[i] + " >> recettes/recettes.txt").c_str());
+    }
+    system("sed -i '/^$/d' recettes/recettes.txt");
 }

@@ -13,12 +13,12 @@ YELLOW='\033[0;33m'
 
 .DEFAULT_GOAL := help
 
-SRC	=	$(wildcard src/*.cpp)
-OBJ	=	$(SRC:.cpp=.o)
-CC	=	g++
-NAME	=	Recette
-CFLAGS	=	
-CXXFLAGS	=	-Wall -Wextra -Werror -std=c++11
+SRC	= $(wildcard src/*.cpp)
+OBJ	= $(SRC:.cpp=.o)
+CC = g++
+NAME = Recette
+CFLAGS =	
+CXXFLAGS = -Wall -Wextra -Werror -std=c++11
 LDFLAGS	=
 
 all: $(NAME) clean
