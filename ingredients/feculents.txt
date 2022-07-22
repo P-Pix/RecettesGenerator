@@ -1,0 +1,7 @@
+pain_de_mie
+pain_hamburger
+pain_viennois
+brioche
+farine_blanche
+farine_de_sarasin
+farine_de_mais

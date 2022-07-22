@@ -1,0 +1,3 @@
+lait_vache
+lait_chevre
+lait_mouton
