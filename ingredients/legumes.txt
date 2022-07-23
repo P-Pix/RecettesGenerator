@@ -1,4 +1,4 @@
 salade
-salade_laitue
 salade_frizee
+salade_laitue
 salade_mache

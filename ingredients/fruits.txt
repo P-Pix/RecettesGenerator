@@ -1,3 +1,4 @@
 banane
-pomme
+fraise
 poire
+pomme

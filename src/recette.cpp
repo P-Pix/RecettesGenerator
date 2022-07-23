@@ -138,7 +138,7 @@ void initListOfRecettes(void) {
     std::vector<std::string> liste;
     while (getline(fichier, ligne)) {
         ligne.erase(ligne.size() - 4, ligne.size());
-        ligne.erase(0, 9);
+        ligne.erase(0, std::string("recettes/").size());
         liste.push_back(ligne);
     }
     fichier.close();

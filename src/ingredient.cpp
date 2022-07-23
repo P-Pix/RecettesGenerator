@@ -1,7 +1,6 @@
 #include "../include/Ingredient.hpp"
 
 Ingredient::Ingredient(void) {
-
 }
 
 Ingredient::Ingredient(const std::string file) {
@@ -17,6 +16,8 @@ Ingredient::~Ingredient(void) {
 }
 
 void Ingredient::readFile(const std::string file) {
+    system(std::string("sort -b -o " + file + " " + file).c_str());
+    //system("for i in $(ls ingredients/); do sort -b -o ingredients/$i ingredients/$i; done");
     if (file.find(".txt") == std::string::npos) {
         std::cout << "Erreur : le fichier n'est pas un fichier txt" << std::endl;
         return;
