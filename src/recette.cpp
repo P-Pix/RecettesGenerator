@@ -114,8 +114,32 @@ std::vector<std::string> getListOfRecettes(void) {
     return liste;
 }
 
-// Code très moche à changer si j'ai envie
-// mais ça fontionne BG
+void Recette::addRecette(void) {
+    std::vector<std::string> tmp;
+    std::string line = "";
+    std::string fileName;
+    std::cout << "Entrez le nom de la recette : ";
+    std::cin >> fileName;
+    while (line.find("exit") == std::string::npos) {
+        std::cout << "Entrez une ligne (exit pour quitter) : ";
+        std::cin >> line;
+        if (line == "exit") {
+            break;
+        }
+        tmp.push_back(line);
+    }
+    // creation du fichier csv
+    std::ofstream fichier("recettes/" + fileName + ".csv");
+    if (!fichier) {
+        std::cout << "Erreur: le fichier n'a pas pu être ouvert" << std::endl;
+        return;
+    }
+    for (size_t i = 0; i < tmp.size(); i++) {
+        fichier << tmp[i] << std::endl;
+    }
+    fichier.close();
+    initListOfRecettes();
+}
 
 void initListOfRecettes(void) {
     system("for i in $(ls recettes/*.csv); do echo $i | sed 's/recettes\\///g' | sed 's/\\.csv//g'; done > recettes/recettes.txt");

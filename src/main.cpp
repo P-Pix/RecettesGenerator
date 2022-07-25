@@ -5,7 +5,8 @@ int main(int argc, char *argv[]) {
         std::cout << argv[i] << std::endl;
     }
     initListOfRecettes();
-    Recette recette("recettes/hamburger.csv");
+    Recette::addRecette();
+    Recette recette("recettes/pates_carbonara.csv");
     Ingredient viandes(INGREDIENT_VIANDE_FILE);
     Ingredient fruits(INGREDIENT_FRUIT_FILE);
     Ingredient laitages(INGREDIENT_LAITAGE_FILE);

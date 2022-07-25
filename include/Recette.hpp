@@ -37,6 +37,8 @@ class Recette {
         
         bool getOptionnel(int index) const;
 
+        static void addRecette(void);
+
         friend std::ostream &operator<<(std::ostream &os, const Recette &recette)  {
             for (int i = 0; i < recette.m_nombreIngredients; i++) {
                 os  << recette.m_listeQuantites[i] << " "
