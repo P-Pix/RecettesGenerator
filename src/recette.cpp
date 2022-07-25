@@ -99,16 +99,6 @@ bool Recette::getOptionnel(int index) const {
     return this->m_listeOptionnels[index];
 }
 
-std::ostream &operator<<(std::ostream &os, const Recette &recette) {
-    for (int i = 0; i < recette.getNombreIngredients(); i++) {
-        os  << recette.getQuantite(i) << " "
-            << recette.getIngredient(i) << " "
-            << (recette.getOptionnel(i) ? "O" : "X") 
-            << std::endl;
-    }
-    return os;
-}
-
 std::vector<std::string> getListOfRecettes(void) {
     std::ifstream fichier("recettes/recettes.txt");
     if (!fichier) {
@@ -128,23 +118,5 @@ std::vector<std::string> getListOfRecettes(void) {
 // mais ça fontionne BG
 
 void initListOfRecettes(void) {
-    system("ls recettes/*.csv > recettes/recettes.txt");
-    std::ifstream fichier("recettes/recettes.txt");
-    if (!fichier) {
-        std::cout << "Erreur: le fichier n'a pas pu être ouvert" << std::endl;
-        return;
-    }
-    std::string ligne;
-    std::vector<std::string> liste;
-    while (getline(fichier, ligne)) {
-        ligne.erase(ligne.size() - 4, ligne.size());
-        ligne.erase(0, std::string("recettes/").size());
-        liste.push_back(ligne);
-    }
-    fichier.close();
-    system("echo > recettes/recettes.txt");
-    for (size_t i = 0; i < liste.size(); i++) {
-        system(("echo " + liste[i] + " >> recettes/recettes.txt").c_str());
-    }
-    system("sed -i '/^$/d' recettes/recettes.txt");
+    system("for i in $(ls recettes/*.csv); do echo $i | sed 's/recettes\\///g' | sed 's/\\.csv//g'; done > recettes/recettes.txt");
 }

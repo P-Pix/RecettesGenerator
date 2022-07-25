@@ -1,4 +1,7 @@
 banane
+citron
 fraise
+kiwi
+orange
 poire
 pomme

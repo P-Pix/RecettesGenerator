@@ -26,14 +26,14 @@ CC = g++
 
 # Name Executable
 NAME = Recette
-CFLAGS =	
-CXXFLAGS = -Wall -Wextra -Werror -std=c++11
+CFLAGS =
+CXXFLAGS = -Wall -Wextra -Werror -std=c++11 `pkg-config gtkmm-3.0 --libs`
 LDFLAGS	=
 
 all: $(NAME) clean ## Compile link and clean all .o file
 
 $(NAME): $(OBJ) ## Compile and link
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CXXFLAGS) $(LDFLAGS) $(OBJ) -o $(NAME)
 
 run: ## Execute the executable
 	@./$(NAME)

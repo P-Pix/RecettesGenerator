@@ -37,7 +37,15 @@ class Recette {
         
         bool getOptionnel(int index) const;
 
-        friend std::ostream &operator<<(std::ostream &os, const Recette &recette);
+        friend std::ostream &operator<<(std::ostream &os, const Recette &recette)  {
+            for (int i = 0; i < recette.m_nombreIngredients; i++) {
+                os  << recette.m_listeQuantites[i] << " "
+                    << recette.m_listeIngredients[i] << " "
+                    << (recette.m_listeOptionnels[i] ? "O" : "X") 
+                    << std::endl;
+            }
+            return os;
+        }
 };
 
 std::vector<std::string> getListOfRecettes(void);

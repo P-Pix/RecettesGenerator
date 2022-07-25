@@ -1,2 +1,4 @@
+cote_de_porc
+jambon_de_porc
 vache_entrecote
 vache_steak
