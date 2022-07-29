@@ -47,6 +47,9 @@ named: ## List all file .cpp in the directory src/
 %.o: src/%.cpp ## Compile the file into an object file
 	$(CC) -c $< -o $@ $(CXXFLAGS)
 
+cleanImage: ## Clean all images in ./images/
+	@rm -rf ./images/*
+
 clean:	## Vide les fichiers .o et le fichier executable
 	@rm -rf $(OBJ)
 
