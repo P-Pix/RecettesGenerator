@@ -52,9 +52,9 @@ def argument() -> None:
 if __name__ == "__main__":
     if len(sys.argv) == 1:
         print('Usage:')
-        print('    -w word: the word to download the image')
-        print('    -f file: the file to get all words')
-        print('    -d directory: the directory with file to get all words')
+        print('\t-w word: the word to download the image')
+        print('\t-f file: the file to get all words')
+        print('\t-d directory: the directory with file to get all words')
         sys.exit(1)
     argument()
     sys.exit(0)
