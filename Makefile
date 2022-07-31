@@ -53,5 +53,8 @@ cleanImage: ## Clean all images in ./images/
 clean:	## Vide les fichiers .o et le fichier executable
 	@rm -rf $(OBJ)
 
+downloadImage: ## Download all images in ./images/
+	@python3 getImage.py
+
 mrproper: clean  ## Vide les fichiers .o et le fichier executable
 	@rm -rf $(NAME)

@@ -35,4 +35,6 @@
 .vscode
 .idea
 
+images/*
+error*.txt
 Recette

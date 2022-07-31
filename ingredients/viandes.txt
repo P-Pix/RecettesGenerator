@@ -1,4 +1,13 @@
-cote_de_porc
-jambon_de_porc
-vache_entrecote
-vache_steak
+alligator
+bœuf
+bison
+buffle
+caribou
+wapiti
+agneau
+porc
+Caille
+dinde
+veau
+venaison
+yak
