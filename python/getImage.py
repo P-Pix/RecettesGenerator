@@ -22,8 +22,14 @@ def downloadImage(word: str, directory: str) -> None:
         response.download(arguments)
     except: ## if the image is not found, print the error
         print(f'Erreur au mot = {word}')
-        errorFile = open('ErrorImage.txt', 'w')
+        errorFile = open('ErrorImage.txt', 'a')
         errorFile.write(f'{word}\n')
+
+def printArgument() -> None:
+    print('Usage:')
+    print("\t-w word: the word to download the image")
+    print("\t-f file: the file to get all words")
+    print("\t-d directory: the directory with file to get all words")
 
 def argument() -> None:
     if sys.argv[1] == '-f': ## -f : download all images from a file with a list of terms, one research per line
@@ -47,14 +53,12 @@ def argument() -> None:
                 data.close()
     else:
         print('Wrong arguments')
+        printArgument()
         sys.exit(1)
 
 if __name__ == "__main__":
     if len(sys.argv) == 1:
-        print('Usage:')
-        print('\t-w word: the word to download the image')
-        print('\t-f file: the file to get all words')
-        print('\t-d directory: the directory with file to get all words')
+        printArgument()
         sys.exit(1)
     argument()
     sys.exit(0)
