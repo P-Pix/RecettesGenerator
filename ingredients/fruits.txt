@@ -1,4 +1,4 @@
-Pomme
+pomme
 abricot
 banane
 baie
@@ -7,7 +7,7 @@ cerise
 citron
 agrumes
 noix de coco
-Date
+date
 figure
 grain de raisin
 goyave
@@ -19,7 +19,7 @@ melon
 mûre
 nectarine
 orange
-Papaye
+papaye
 pêche
 poire
 ananas

@@ -8,9 +8,9 @@ def translate(word: str) -> str:
     word = word.replace('\n', '')
     try:
         translator = Ts()
-        language = translator.detect(word)
-        print(f"\'{word}\' = \'{language.lang}\'")
-        translation = translator.translate(word, src=language.lang, dest="fr")
+        language = translator.detect(word).lang
+        print(f"\'{word}\' = \'{language}\'")
+        translation = translator.translate(word, src=language, dest="fr")
         print(f"\'{word}\' = \'{translation.text}\'")
         return translation.text
     except:
