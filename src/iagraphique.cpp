@@ -37,9 +37,9 @@ void IAGraphique::train(std::map<std::vector<float>, bool> values) {
         this->m_parametres.push_back(0.5);
     }
     for (auto it = values.begin(); it != values.end(); it++) {
-        while (fonction(it[0]) != it[1]) {
+        while (fonction(it->first) != it->second) {
             int index = rand() % m_parametres.size();
-            if (it[1] == POSITIVE) {
+            if (it->second == POSITIVE) {
                 m_parametres[index] += 0.01;
             } else {
                 m_parametres[index] -= 0.01;
