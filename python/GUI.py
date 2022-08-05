@@ -12,10 +12,11 @@ def readIngredient(fileName: str) -> list:
     liste.sort()
     return liste
 
-def initList() -> list:
+def initList(src: str) -> list:
     ingredients = []
-    for i in os.listdir("ingredients/"):
-        ingredients.extend(readIngredient("ingredients/" + i))
+    for i in os.listdir(src):
+        if i.endswith(".txt"):
+            ingredients.extend(readIngredient(src + i))
     ingredients.sort()
     print(ingredients)
     return ingredients
@@ -39,8 +40,8 @@ def menu(root: Tk.Tk) -> None:
     helpmenu.add_command(label="About...", command=lambda: help())
     return menu
 
-def addListeIngredient() -> Tk.Listbox:
-    ingredients = initList()
+def addListeIngredient(src: str) -> Tk.Listbox:
+    ingredients = initList(src)
     LISTE = Tk.Listbox(width=50, height=10)
     for i in ingredients:
         LISTE.insert(Tk.END, i)
@@ -56,7 +57,7 @@ def addCanvasRecette(filename: str) -> Tk.Canvas:
     return CANVAS
 
 def addButtonAddIngredient(LISTE: Tk.Listbox, ingredients: list) -> Tk.Button:
-    AJOUTER_INGREDIENT_LISTE = Tk.Button(text='Ajouter un ingredient', command=lambda: ajouter_ingredient(LISTE.get(), ingredients))
+    AJOUTER_INGREDIENT_LISTE = Tk.Button(text='Ajouter un ingredient', command=lambda: ajouter_ingredient(LISTE.get(first=1, last=1), ingredients))
     AJOUTER_INGREDIENT_LISTE.pack()
     return AJOUTER_INGREDIENT_LISTE
 
@@ -77,10 +78,11 @@ def main() -> None:
     root = Tk.Tk()
     root.title("Recherche d'ingrédients")
     menu(root)
-    INGREDIENT = addListeIngredient()
+    INGREDIENT = addListeIngredient("ingredients/")
     AJOUTER_INGREDIENT_LISTE = addButtonAddIngredient(INGREDIENT, ingredients)
     ENTRY = addEntryCase()
     AJOUTER_INGREDIENT_ENTRY = addButtonAddIngredient(ENTRY, ingredients)
+    LISTE_RECETTE = addListeIngredient("recettes/")
     RECETTE = addCanvasRecette("recettes/hamburger.csv")
     root.mainloop()
     
