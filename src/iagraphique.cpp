@@ -25,6 +25,7 @@ bool IAGraphique::fonction(std::map<X, Y> values) {
     auto it = values.begin();
     for (int i = 0; i < m_parametres.size(); i++) {
         separateur += pow(it->first, counter) * m_parametres[i];
+        counter++;
     }
     if (separateur > it->second) {
         return POSITIVE;
