@@ -8,6 +8,8 @@
 
 #define POSITIVE true
 #define NEGATIVE false
+#define X float
+#define Y float
 
 class IAGraphique {
     private:
@@ -19,6 +21,6 @@ class IAGraphique {
         IAGraphique(unsigned int nb_parametres);
         ~IAGraphique(void);
         void setNumberOfParameters(unsigned int nb_parametres);
-        bool fonction(std::vector<float> values);
-        void train(std::map<std::vector<float>, bool> values);
+        bool fonction(std::map<X, Y> values);
+        void train(std::map<std::map<X, Y>, bool> values);
 };
