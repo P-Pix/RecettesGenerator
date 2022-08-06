@@ -4,6 +4,30 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < argc; i++) {
         std::cout << argv[i] << std::endl;
     }
+    std::map<std::map<float, float>, bool> values;
+    std::map<float, float> values1; // true
+    std::map<float, float> values2; // true
+    std::map<float, float> values3; // false
+    std::map<float, float> values4; // false
+
+    values1[0] = 0;
+    values1[1] = 0;
+
+    values2[0] = 0;
+    values2[1] = 1;
+
+    values3[0] = 1;
+    values3[1] = 0;
+
+    values4[0] = 1;
+    values4[1] = 1;
+    values[values1] = NEGATIVE;
+    values[values2] = NEGATIVE;
+    values[values3] = POSITIVE;
+    values[values4] = POSITIVE;
+    IAGraphique ia(2, "test");
+    ia.train(values);
+    /*
     initListOfRecettes();
     Recette::addRecette();
     Recette recette("recettes/pates_carbonara.csv");
@@ -35,5 +59,6 @@ int main(int argc, char *argv[]) {
             std::cout << "Cette lettre n'existe pas." << std::endl;
         }
     }
+    */
     return 0;
 }
