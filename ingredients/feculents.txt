@@ -1,7 +1,7 @@
 brioche
-farine_blanche
-farine_de_mais
-farine_de_sarasin
-pain_de_mie
-pain_hamburger
-pain_viennois
+farine blanche
+farine de mais
+farine de sarasin
+pain de mie
+pain hamburger
+pain viennois

@@ -38,3 +38,11 @@
 images/*
 error*.txt
 Recette
+
+.ipynb_checkpoints
+.pytest_cache
+*.ipynb
+cache
+
+test
+test/*

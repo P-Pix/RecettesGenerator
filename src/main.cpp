@@ -4,28 +4,26 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < argc; i++) {
         std::cout << argv[i] << std::endl;
     }
-    std::map<std::map<float, float>, bool> values;
-    std::map<float, float> values1; // true
-    std::map<float, float> values2; // true
-    std::map<float, float> values3; // false
-    std::map<float, float> values4; // false
-
-    values1[0] = 0;
-    values1[1] = 0;
-
-    values2[0] = 0;
-    values2[1] = 1;
-
-    values3[0] = 1;
-    values3[1] = 0;
-
-    values4[0] = 1;
-    values4[1] = 1;
-    values[values1] = NEGATIVE;
-    values[values2] = NEGATIVE;
-    values[values3] = POSITIVE;
-    values[values4] = POSITIVE;
-    IAGraphique ia(2, "test");
+    std::map<float, bool> values;
+    values[0.0] = NEGATIVE;
+    values[0.5] = NEGATIVE;
+    values[1.0] = NEGATIVE;
+    values[1.5] = NEGATIVE;
+    values[6.0] = POSITIVE;
+    values[6.5] = POSITIVE;
+    values[7.0] = POSITIVE;
+    values[7.5] = POSITIVE;
+    values[8.0] = POSITIVE;
+    std::cout << "values[0.0] = " << values[0.0] << std::endl;
+    std::cout << "values[1.0] = " << values[1.0] << std::endl;
+    std::cout << "values[2.0] = " << values[2.0] << std::endl;
+    std::cout << "values[3.0] = " << values[3.0] << std::endl;
+    std::cout << "values[4.0] = " << values[4.0] << std::endl;
+    std::cout << "values[5.0] = " << values[5.0] << std::endl;
+    std::cout << "values[6.0] = " << values[6.0] << std::endl;
+    std::cout << "values[7.0] = " << values[7.0] << std::endl;
+    std::cout << "values[8.0] = " << values[8.0] << std::endl;
+    IAGraphique ia(4, "test");
     ia.train(values);
     /*
     initListOfRecettes();

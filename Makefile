@@ -27,7 +27,7 @@ CC = g++
 # Name Executable
 NAME = Recette
 CFLAGS =
-CXXFLAGS = -Wall -Wextra -Werror -std=c++11 `pkg-config gtkmm-3.0 --libs`
+CXXFLAGS = -Wall -Wextra -Werror -std=c++11 -pthread `pkg-config gtkmm-3.0 --libs`
 LDFLAGS	=
 
 all: $(NAME) clean ## Compile link and clean all .o file
